@@ -1,8 +1,8 @@
 {
     "require": {
-        "craftcms/cms": "^3.6.0-RC1",
+        "craftcms/cms": "^3.6.4.1",
         "vlucas/phpdotenv": "^3.4.0",
-        "wbrowar/guide": "@dev"
+        "REPLACE_WITH_PACKAGE_NAME": "@dev"
     },
     "autoload": {
         "psr-4": {
@@ -17,6 +17,13 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/var/www/html/.assembly-cache/plugin/",
+            "symlink": true
+        }
+    ]
 }
 

@@ -1,4 +1,5 @@
 # CRAFT ENVIRONMENT
+.env
 /_source/_craft/composer.lock
 /_source/_craft/config/license.key
 /_source/_craft/storage/*

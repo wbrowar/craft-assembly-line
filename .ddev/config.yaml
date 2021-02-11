@@ -1,4 +1,4 @@
-name: REPLACE_WITH_NAME
+name: REPLACE_WITH_PROJECT_NAME
 type: php
 docroot: _source/_craft/web
 php_version: "8.0"
@@ -8,7 +8,7 @@ router_https_port: "443"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns:
-- REPLACE_WITH_SITE_URL.test
+- REPLACE_WITH_PROJECT_NAME.test
 provider: default
 hooks:
   post-import-db:

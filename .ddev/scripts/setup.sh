@@ -4,7 +4,7 @@
 PLUGIN_PACKAGE="REPLACE_WITH_PACKAGE_NAME"
 
 # Set SITE_URL to the same value set for `REPLACE_WITH_SITE_URL.test` in ./.ddev/config.yaml
-SITE_URL="REPLACE_WITH_SITE_URL"
+SITE_URL="http://REPLACE_WITH_SITE_URL.test"
 
 
 # Check that setup is done before setting up project
@@ -28,8 +28,13 @@ if [ $SITE_URL == "REPLACE_WITH_SITE_URL" ]; then
   exit 1
 fi
 
-if grep -Fxq "REPLACE_WITH_SITE_URL" _source/_craft/example.env; then
+if grep -q "REPLACE_WITH_SITE_URL" _source/_craft/example.env; then
   printf '%s\n' "Error: ./.ddev/setup.sh failed. Replace REPLACE_WITH_SITE_URL in _source/_craft/example.env with a local testing domain. For example setting this to my-project.test lets you visit this Craft site at https://my-project.test/" >&2
+  exit 1
+fi
+
+if grep -q "REPLACE_WITH_PACKAGE_NAME" _source/_craft/composer.json; then
+  printf '%s\n' "Error: ./.ddev/setup.sh failed. Replace REPLACE_WITH_PACKAGE_NAME in _source/_craft/composer.json with your plugin package name (vendor/name)." >&2
   exit 1
 fi
 
@@ -58,6 +63,11 @@ else
   fi
 fi
 
+echo "Preparing to install plugin"
+mkdir -p /var/www/html/.assembly-cache/plugin/
+cp /var/www/html/composer.json /var/www/html/.assembly-cache/plugin/composer.json
+cp -r /var/www/html/src/ /var/www/html/.assembly-cache/plugin/src/
+
 echo "Changing working directory to _source/_craft/"
 cd /var/www/html/_source/_craft/
 
@@ -72,10 +82,13 @@ if [ -d "/var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE" ]; then
   echo "Removing installed version of plugin."
   rm -rf /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
   echo "Replacing installed version with development version."
+  ln -nfs ../../../../ /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
 else
   echo "Symlinking plugin into Craft vendor directory."
+  mkdir -p /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
+  rm -rf /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
+  ln -nfs ../../../../ /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
 fi
-ln -nfs ../../../../ /var/www/html/_source/_craft/vendor/$PLUGIN_PACKAGE
 
 if [ -f ".env" ]; then
   echo "Craft environment file found."
@@ -93,3 +106,6 @@ echo "Installing Craft"
 echo "Craft installed with"
 echo "  User: admin"
 echo "  Password: password"
+
+echo "Cleanup"
+rm -rf /var/www/html/.assembly-cache/
