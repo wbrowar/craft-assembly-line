@@ -1,6 +1,6 @@
 {
     "require": {
-        "craftcms/cms": "^3.6.4.1",
+        "craftcms/cms": "3.6.5.1",
         "vlucas/phpdotenv": "^3.4.0",
         "REPLACE_WITH_PACKAGE_NAME": "@dev"
     },
@@ -21,7 +21,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "/var/www/html/.assembly-cache/plugin/",
+            "url": "/var/www/html/.assembly-cache/setup/plugin/",
             "symlink": true
         }
     ]

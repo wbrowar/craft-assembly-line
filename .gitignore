@@ -1,21 +1,25 @@
+# ASSEMBLY LINE
+.assebly-cache
+
 # CRAFT ENVIRONMENT
 .env
-/_source/_craft/composer.lock
-/_source/_craft/config/license.key
-/_source/_craft/storage/*
-!/_source/_craft/storage/.gitkeep
-/_source/_craft/web/cpresources
-/_source/_craft/vendor
+_source/_craft/composer.lock
+_source/_craft/config/license.key
+_source/_craft/storage/*
+!_source/_craft/storage/.gitkeep
+_source/_craft/web/cpresources
+_source/_craft/vendor
 
 # NODE ENVIRONMENT
-/node_modules/*
+node_modules/*
 
 # DDEV
 .ddev/*
+!.assembly-line-config/assembly-config.sh
 !.ddev/scripts
 !.ddev/config.yaml
 !.ddev/config.*.yaml
-!.ddev/commands/web/craft-clean
+!.ddev/commands/web/clean-craft
 
 # MISC FILES
 .cache
