@@ -162,5 +162,19 @@ _NOTE: Vite will output your JavaScript as ES modules with this setup, so passin
 ---
 
 
+## Q&A
+- Why DDEV?
+  - DDEV is a tool that helps make Docker development a little easier by including some helper commands and hooks. It’s very similar to [Craft Nitro](https://getnitro.sh) and at some point it might make sense to switch from DDEV to Nitro.
+- Why Vite?
+  - One of Craft’s requirements is that browsers support ES modules. This means that code built and tested with Vite should be fine out of the box. Vite can support older browsers and it’s easy to swap out the front-end build system with something like Webpack, so if your plugin’s assets do anything on the front-end it might be worth checking those out.
+- How do I upgrade to a newer version?
+  - Once a project is created it may get messy if you try to upgrade your Assembly Line files in bulk. Getting to know DDEV’s configuration and knowing how to update your Docker configuration may be the better route. That said, upgrading DDEV and Docker should be okay as updates come out.
+- What’s next? Here’s a tentative roadmap:
+  - Add support for HMR
+    - This can probably be achieved by figuring out port mapping. For now, building with `ddev npm run build` works and can be really fast, but we all know HMR is better 😎
+  - Migrate from DDEV to Nitro
+    - It looks like Nitro includes a lot of the same concepts as DDEV so it would come down to taking the time to get familiar enough with Nitro to see how everything can be moved over.
+
+
 ## Credits
 The DDEV setup was inspired by work by Zach Sackett and Marc Hartwig.
