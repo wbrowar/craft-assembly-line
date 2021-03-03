@@ -13,16 +13,16 @@ _source/_assets/node_modules/*
 
 # DDEV
 .ddev/*
-!.ddev/commands/db/clean-craft-db
-!.ddev/commands/web/clean-craft
-!.ddev/commands/web/clean-node
-!.ddev/commands/web/composer
-!.ddev/commands/web/craft
-!.ddev/commands/web/npm
-!.ddev/scripts
-!.ddev/web-build/Dockerfile
-!.ddev/config.yaml
-!.ddev/docker-compose.front-end.yaml
+!/.ddev/commands/db/clean-craft-db
+!/.ddev/commands/web/clean-craft
+!/.ddev/commands/web/clean-node
+!/.ddev/commands/web/composer
+!/.ddev/commands/web/craft
+!/.ddev/commands/web/npm
+!/.ddev/scripts
+!/.ddev/web-build/Dockerfile
+!/.ddev/config.yaml
+!/.ddev/docker-compose.front-end.yaml
 
 # MISC FILES
 .cache
